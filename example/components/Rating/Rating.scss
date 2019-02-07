@@ -1,0 +1,34 @@
+.rating {
+  display: flex;
+
+  .star {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    path {
+      fill: white;
+      stroke: black;
+      transition: fill 100ms ease;
+    }
+
+    &.filled {
+      path {
+        fill: orange;
+      }
+    }
+  }
+
+  &:hover {
+    .star {
+      path {
+        fill: gray;
+      }
+    }
+    & > .star:hover ~ .star {
+      path {
+        fill: white;
+      }
+    }
+  }
+}

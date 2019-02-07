@@ -1,0 +1,29 @@
+$shadow: rgba(0, 0, 0, 0.15);
+
+.book-row {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px $shadow, 0 0 0 black, 0 1px 1px $shadow;
+  padding: 10px 20px;
+  width: 500px;
+  transition: background 100ms ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .details {
+    display: flex;
+  }
+
+  .author {
+    flex: 1;
+    font-size: 16px;
+    color: #999;
+    font-style: italic;
+  }
+}
