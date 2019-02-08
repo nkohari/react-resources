@@ -6,6 +6,11 @@ import './App.scss';
 
 export const App = () => (
   <Subscribe to={[Books]} fallback={<div>Loading...</div>}>
-    {books => <BookList books={books.getAll()} />}
+    {books => (
+      <div>
+        <h1>My Books</h1>
+        <BookList books={books.getAll()} />
+      </div>
+    )}
   </Subscribe>
 );

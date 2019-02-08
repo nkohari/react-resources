@@ -19,20 +19,17 @@ interface ProviderProps {
  * Creates a scope in which services will be created. Can be used to isolate
  * services for a specific subtree, or inject predetermined values for services.
  */
-export function Provider(props: ProviderProps) {
-  const { children, inject } = props;
-  return (
-    <ContainerContext.Consumer>
-      {parentContainer => {
-        const container = new Container(parentContainer);
-        if (inject) {
-          inject.forEach(instance => {
-            const service = instance.constructor as ServiceClass;
-            container.set(service, instance);
-          });
-        }
-        return <ContainerContext.Provider value={container}>{children}</ContainerContext.Provider>;
-      }}
-    </ContainerContext.Consumer>
-  );
-}
+export const Provider = (props: ProviderProps) => (
+  <ContainerContext.Consumer>
+    {parentContainer => {
+      const container = new Container(parentContainer);
+      if (props.inject) {
+        props.inject.forEach(instance => {
+          const service = instance.constructor as ServiceClass;
+          container.set(service, instance);
+        });
+      }
+      return <ContainerContext.Provider value={container}>{props.children}</ContainerContext.Provider>;
+    }}
+  </ContainerContext.Consumer>
+);

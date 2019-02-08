@@ -18,21 +18,19 @@ interface SubscribeProps<TDependencies extends DependencyList> {
   to: TDependencies;
 }
 
-function SubscribeContent<TDependencies extends DependencyList>(props: SubscribeProps<TDependencies>) {
+const SubscribeContent = <TDependencies extends DependencyList>(props: SubscribeProps<TDependencies>) => {
   const dependencies = props.to;
   const services = useServices(...dependencies);
   const renderer = props.children;
   return renderer.apply(null, services);
-}
+};
 
 /**
  * Resolves instances of services, and provides means to show a loading message
  * while necessary data is still being loaded from those services.
  */
-export function Subscribe<TDependencies extends DependencyList>(props: SubscribeProps<TDependencies>) {
-  return (
-    <Suspense fallback={props.fallback}>
-      <SubscribeContent {...props} />
-    </Suspense>
-  );
-}
+export const Subscribe = <TDependencies extends DependencyList>(props: SubscribeProps<TDependencies>) => (
+  <Suspense fallback={props.fallback}>
+    <SubscribeContent {...props} />
+  </Suspense>
+);
