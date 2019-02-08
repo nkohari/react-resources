@@ -3,12 +3,16 @@ $shadow: rgba(0, 0, 0, 0.15);
 .book-row {
   border-radius: 2px;
   box-shadow: 0 0 0 1px $shadow, 0 0 0 black, 0 1px 1px $shadow;
-  padding: 10px 20px;
   width: 500px;
   transition: background 100ms ease;
+  cursor: pointer;
 
   &:hover {
     background: rgba(0, 0, 0, 0.05);
+  }
+
+  .content {
+    padding: 10px 20px;
   }
 
   .title {
@@ -17,7 +21,7 @@ $shadow: rgba(0, 0, 0, 0.15);
     font-weight: 600;
   }
 
-  .details {
+  .authorAndRating {
     display: flex;
   }
 
@@ -26,5 +30,22 @@ $shadow: rgba(0, 0, 0, 0.15);
     font-size: 16px;
     color: #666;
     font-style: italic;
+  }
+
+  .details {
+    padding: 10px 20px;
+    border-top: 1px solid $shadow;
+  }
+
+  .isbn {
+    font-size: 12px;
+    color: #666;
+
+    strong {
+      background: lightgray;
+      padding: 2px 4px;
+      border-radius: 4px;
+      margin-right: 4px;
+    }
   }
 }
